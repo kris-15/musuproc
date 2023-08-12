@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Semantic-UI/semantic.css">
+
+    <script type="text/javascript" src="Libs/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="Semantic-UI/semantic.js"></script>
+    <script type="text/javascript" src="controler/controler.js"></script>
+
+    <title>Page d'accueil</title>
+</head>
+
+<body>
+  <center>
+    <br> <br> <br> <br> <br> <br>
+    <form action="model/verification_etud.php" method="POST">
+  <div class="ui placeholder segment" style="width: 300px; padding:4vh; background-color:purple">
+    <div class="ui column   stackable ">
+        <div class="ui form">
+          <div class="field"  > 
+            <label style="color:white;">Code_utilisateur</label>
+            <div class="ui left icon input">
+              <input  type="text" placeholder="Enter le code_utilisateur " name="code" >
+              <i class="user icon"></i>
+            </div>
+          </div>
+          <div class="field">
+            <label style="color: white; ">Mot de passe</label>
+            <div class="ui left icon input">
+              <input type="password" name="mdp" >
+              <i class="lock icon"></i>
+            </div>
+          </div>
+           <input class="ui blue submit button" type="submit" value="Se connecter" style="padding: 2vh;">
+       
+      </div>
+    </div>
+  </div>
+</form>
+    </center>
+    <br>
+   <div class="btn_administrateur" >
+ <button  class="ui blue sublit buttun" style="padding: 2vh;background-color:black"><a href="view/form_admin.html">Espace admnin</a></button>
+   </div>
+</body>
+
+</html>
