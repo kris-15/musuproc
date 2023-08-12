@@ -22,17 +22,17 @@ class DataClassEtudiants
     public function addEtudiant(array $etudiant) {
         $sql = "INSERT INTO inscription (nom, post_nom,numero,prenom,avenue,promotion,quartier,commune,profession,date,sexe) values(?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $this->conn->prepare($sql);
-        // $stmt->bindParam(1, $etudiant['nom']);
-        // $stmt->bindParam(2, $etudiant['post_nom']);
-        // $stmt->bindParam(3, $etudiant['numerp']);
-        // $stmt->bindParam(4, $etudiant['prenom']);
-        // $stmt->bindParam(5, $etudiant['avenue']);
-        // $stmt->bindParam(6, $etudiant['promotion']);
-        // $stmt->bindParam(7, $etudiant['quartier']);
-        // $stmt->bindParam(8, $etudiant['commune']);
-        // $stmt->bindParam(9, $etudiant['profession']);
-        // $stmt->bindParam(10, $etudiant['date']);
-        // $stmt->bindParam(11, $etudiant['sexe']);
+        $stmt->bindParam(1, $etudiant['nom']);
+        $stmt->bindParam(2, $etudiant['post_nom']);
+        $stmt->bindParam(3, $etudiant['numerp']);
+        $stmt->bindParam(4, $etudiant['prenom']);
+        $stmt->bindParam(5, $etudiant['avenue']);
+        $stmt->bindParam(6, $etudiant['promotion']);
+        $stmt->bindParam(7, $etudiant['quartier']);
+        $stmt->bindParam(8, $etudiant['commune']);
+        $stmt->bindParam(9, $etudiant['profession']);
+        $stmt->bindParam(10, $etudiant['date']);
+        $stmt->bindParam(11, $etudiant['sexe']);
         $stmt->execute();
         // gestion erreur
         $message = $stmt->errorInfo();
