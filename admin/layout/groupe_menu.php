@@ -11,9 +11,9 @@
     
     <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
         <ul class="nav flex-column">
-        <?= $bootstrap->menu("Accueil", '') ?>
+        <?= $bootstrap->menu("Accueil", 'AdministrateurCtrl.php') ?>
         <?= $bootstrap->menu("Sensibilisation", '') ?>
-        <?= $bootstrap->menu("Livret de santé", '') ?>
+        <?= $bootstrap->menu("Livret de santé", 'LivretCtrl.php') ?>
         </ul>
 
         <hr class="my-3">
