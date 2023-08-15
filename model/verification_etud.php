@@ -6,7 +6,7 @@ $code = $_POST['code'];
 $mot = $_POST['mdp'];
 
 
-$reponse = $con->query("SELECT * FROM etudiant");
+$reponse = $con->query("SELECT * FROM acces");
 
 while ($donnees = $reponse->fetch()) {
 

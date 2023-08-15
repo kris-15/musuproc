@@ -27,7 +27,7 @@
     <i class="question circle icon"></i><a class="item">
       A propos
     </a>
-    <i class="edit icon"></i><a href="../view/inscription.html" class="item">S'inscrire  </a>   
+    <i class="edit icon"></i><a href="../view/inscription.php" class="item">S'inscrire  </a>   
    
       <i class="power off icon"></i><a href="../index.html" class="item">Se déconnecter   </a>
     
@@ -46,7 +46,7 @@
  <center><button class="ui active button" style="background-color:blue;padding:2vh"><i class="file alternate icon" style="color:white"></i> <a href="../view/services.html" style="color:white">Voir services </a> </button> </center>
 </div>
 <br>
-<div class="image_acceuil" style="whidth:500px; margin-left:140vh;margin-top:-80vh;height:400px,padding:6vh">
+<div class="image_acceuil" style="width:500px; margin-left:140vh;margin-top:-80vh;height:400px;padding:6vh">
 <img  src="../image/acceuil2.jpeg" >
 </div>
 <div class="ecrit_horizontal" style="border:1px solid blue; height:200px; ">
