@@ -73,4 +73,53 @@ class Administrateur extends Model{
         $modifier = $this->prepare_sql($sql, [$valeur, $id_livret]);
         return $modifier;
     }
+
+    /**
+     * ===================================== Partie sensibilisation =========================================
+     */
+    /**
+     * Cette fonction permet d'enregistrer un nouveau message de sensibilisation 
+     * Qu'on pourra partager à tous les étudiants
+     * @param string $titre Le titre du message
+     * @param string $message Le contenu du message
+     * @param string? $nom_image Le nom de la photo de la sensibilisation, optionnelle
+     * @return bool $partager 
+     */
+    public function partager_message($titre, $message, $nom_image = null){
+        $sql = "INSERT INTO sensibilisations (titre, message) VALUES (?, ?)";
+        $partager = $this->prepare_sql($sql, [$titre, $message]);
+        if($nom_image != null){
+            $sql = "SELECT id FROM sensibilisations WHERE titre = ? AND message = ? ORDER BY date_creation DESC LIMIT 1";
+            $stmt = $this->pdo()->prepare($sql);
+            $stmt->execute([$titre, $message]);
+            $sensibilisation_id = $stmt->fetch(PDO::FETCH_ASSOC);
+            $sql = "INSERT INTO photo_sensibilisation (nom_image, sensibilisation_id) VALUES (?, ?)";
+            $partager = $this->prepare_sql($sql, [$nom_image, $sensibilisation_id['id']]);
+        }
+        
+        return $partager;
+    }
+
+    /**
+     * Permet de récupérer les informations d'un message de sensibilisation à partir de son id
+     * @param int $id_sensibilisation L'identifiant de la sensibilisation souhaitée
+     * @return array $sensibilisation Les informations souhaitées
+     */
+    public function get_sensibilisation_par_id($id_sensibilisation){
+        $sql = "SELECT * FROM sensibilisations WHERE id = ? LIMIT 1";
+        $stmt = $this->pdo()->prepare($sql);
+        $stmt->execute([$id_sensibilisation]);
+        $sensibilisation = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $sensibilisation;
+    }
+    /**
+     * Permet de récupérer tous les messages dont le statut est ACTIVE
+     * @return array $donnees
+     */
+    public function get_sensibilisation(){
+        $sql = "SELECT *, photo_sensibilisation.id AS id_photo FROM sensibilisations left join photo_sensibilisation on 
+                    sensibilisations.id = sensibilisation_id WHERE statut = ? ORDER BY sensibilisations.id DESC";
+        $donnnees = $this->prepare_sql($sql, ['ACTIVE'], true);
+        return $donnnees;
+    }
 }
