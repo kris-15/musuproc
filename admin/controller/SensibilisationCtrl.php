@@ -42,19 +42,27 @@ if(isset($_POST['soumettre'])){
 }
 if(isset($_POST['action'])){
     extract($_POST);
-    print_r($_POST);
     if($action == 'modifier'){
         $sensibilisation = $admin->get_sensibilisation_par_id($id);
         
     }elseif($action == 'supprimer'){
-
+        $suppression = $admin->supprimer_sensibilisation($id);
+        if($suppression == null){
+            $message_succes = "Sensibilisation supprimée avec succès";
+        }else{
+            $erreur = "Echec de la suppression du message";
+        }
     }
 }
 if(isset($_POST['modifier'])){
-    echo '<pre>';
-    print_r($_POST);
-    print_r($_FILES);
-    echo '</pre>';
+    extract($_POST);
+    $modifier = $admin->modifier_sensibilisation($id_sensibilisation, $titre, $contenu);
+    var_dump($modifier);
+    if($modifier == null){
+        $message_succes = "La modifiction du message de sensibilisation effectuée avec succès";
+    }else{
+        $erreur = "Echec de la modification du message";
+    }
 }
 $sensibilisations = $admin->get_sensibilisation();
 require '../view/sensibilisation.php';

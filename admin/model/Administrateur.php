@@ -130,4 +130,11 @@ class Administrateur extends Model{
         $sql = "UPDATE sensibilisations SET titre = ?, message = ? WHERE id = ?";
         $modifier = $this->prepare_sql($sql, [$titre, $message, $sensibilisation['id']]);
     }
+    public function supprimer_sensibilisation($id){
+        $sensibilisation = $this->get_sensibilisation_par_id($id);
+        if($sensibilisation){
+            $sql = "UPDATE sensibilisations SET statut = ? WHERE id = ?";
+            $modifier = $this->prepare_sql($sql, ['DESACTIVE', $sensibilisation['id']]);
+        }
+    }
 }

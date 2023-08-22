@@ -21,6 +21,9 @@
         <label for="titre" class="form-label">Image (Facultative)</label>
         <input type="file" class="form-control" id="titre" name="photo" placeholder="Le titre de votre message de sensibilisation">
     </div>
+    <?php if(isset($sensibilisation['id'])):?>
+        <input type="hidden" name="id_sensibilisation" value="<?= $sensibilisation['id'] ?>">
+    <?php endif?>
     <div class="d-flex my-2">
         <input type="submit" class="btn btn-dark form-control" name="<?= isset($sensibilisation['id'])?'modifier':'soumettre' ?>" value="<?= isset($sensibilisation['id'])?'Modifier':'Partager' ?>">
     </div>
