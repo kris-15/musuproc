@@ -23,6 +23,8 @@
             Acceuil
           </a>
           <i class="file alternate icon"></i><a href="services.html" class="item"> Services  </a>
+          <i class="file alternate icon"></i>
+            <a href="services.html" class="item" href="../view/sensibilisation.php">Sensibilisation  </a>
           
           <i class="question circle icon"></i><a class="active item" href="../controler/etudiantCtrl.php">
             <?= (isset($_SESSION['code']))? $_SESSION['code']:'Espace' ?></a>

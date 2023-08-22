@@ -42,11 +42,19 @@ if(isset($_POST['soumettre'])){
 }
 if(isset($_POST['action'])){
     extract($_POST);
+    print_r($_POST);
     if($action == 'modifier'){
         $sensibilisation = $admin->get_sensibilisation_par_id($id);
+        
     }elseif($action == 'supprimer'){
 
     }
+}
+if(isset($_POST['modifier'])){
+    echo '<pre>';
+    print_r($_POST);
+    print_r($_FILES);
+    echo '</pre>';
 }
 $sensibilisations = $admin->get_sensibilisation();
 require '../view/sensibilisation.php';

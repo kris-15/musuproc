@@ -24,8 +24,8 @@
     <i class="file alternate icon"></i><a href="../view/services.html" class="item"> Services  </a>
     
   
-    <i class="question circle icon"></i><a class="item">
-      A propos
+    <i class="question circle icon"></i><a class="item" href="../view/sensibilisation.php">
+      Sensibilisation
     </a>
     <i class="edit icon"></i><a href="../view/inscription.php" class="item">S'inscrire  </a>   
    

@@ -117,9 +117,17 @@ class Administrateur extends Model{
      * @return array $donnees
      */
     public function get_sensibilisation(){
-        $sql = "SELECT *, photo_sensibilisation.id AS id_photo FROM sensibilisations left join photo_sensibilisation on 
-                    sensibilisations.id = sensibilisation_id WHERE statut = ? ORDER BY sensibilisations.id DESC";
+        $sql = "SELECT *, sensibilisations.id as id_sens, photo_sensibilisation.id AS id_photo FROM 
+                    sensibilisations left join photo_sensibilisation on sensibilisations.id = 
+                    sensibilisation_id WHERE statut = ? ORDER BY sensibilisations.id DESC
+                ";
         $donnnees = $this->prepare_sql($sql, ['ACTIVE'], true);
         return $donnnees;
+    }
+
+    public function modifier_sensibilisation($id_sensibilisation, $titre, $message){
+        $sensibilisation = $this->get_sensibilisation_par_id($id_sensibilisation);
+        $sql = "UPDATE sensibilisations SET titre = ?, message = ? WHERE id = ?";
+        $modifier = $this->prepare_sql($sql, [$titre, $message, $sensibilisation['id']]);
     }
 }

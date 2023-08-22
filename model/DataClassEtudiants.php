@@ -30,6 +30,14 @@ class Etudiant extends Model
 
         return $infos;
     }
+    public function get_sensibilisation(){
+        $sql = "SELECT *, sensibilisations.id as id_sens, photo_sensibilisation.id AS id_photo FROM 
+                    sensibilisations left join photo_sensibilisation on sensibilisations.id = 
+                    sensibilisation_id WHERE statut = ? ORDER BY sensibilisations.id DESC
+                ";
+        $donnnees = $this->prepare_sql($sql, ['ACTIVE'], true);
+        return $donnnees;
+    }
   //  public function recupEtudiants(){
         //$sql = "SELECT * from inscription";
       //  $stmt = $this->conn->prepare($sql);

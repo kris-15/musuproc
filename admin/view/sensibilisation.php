@@ -22,11 +22,12 @@
         <input type="file" class="form-control" id="titre" name="photo" placeholder="Le titre de votre message de sensibilisation">
     </div>
     <div class="d-flex my-2">
-        <input type="submit" class="btn btn-dark form-control" name="soumettre" value="<?= isset($sensibilisation['id'])?'Modifiez':'Partagez' ?>">
+        <input type="submit" class="btn btn-dark form-control" name="<?= isset($sensibilisation['id'])?'modifier':'soumettre' ?>" value="<?= isset($sensibilisation['id'])?'Modifier':'Partager' ?>">
     </div>
 </form>
 <div class="border-bottom border-top my-3"></div>
 <?php foreach($sensibilisations as $sensibilise):?>
+    
     <div class="container my-5">
         <div class="container col-xxl-8 px-4 py-3" >
             <div class="row flex-lg-row-reverse align-items-center g-5 p-4 pb-0 pe-lg-0 pt-lg-5 rounded-3 border shadow-lg">
@@ -38,7 +39,7 @@
                 <p class="lead"><?= $sensibilise['message'] ?></p>
                 
                 <form class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3" method="post">
-                    <input type="hidden" name="id" value="1">
+                    <input type="hidden" name="id" value="<?= $sensibilise['id_sens'] ?>">
                     <button type="submit" name="action" class="btn btn-outline-danger btn-lg px-4 me-md-2 fw-bold" value="supprimer">Supprimer</button>
                     <button type="submit" name="action" class="btn btn-outline-secondary btn-lg px-4" value="modifier">Modifier</button>
                 </form>
